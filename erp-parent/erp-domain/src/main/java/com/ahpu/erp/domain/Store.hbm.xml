@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        '-//Hibernate/Hibernate Mapping DTD 3.0//EN'
+        'http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd'>
+<hibernate-mapping>
+    <class name="com.ahpu.erp.domain.Store" table="tbl_store">
+        <id name="id">
+            <generator class="uuid" />
+        </id>
+        <property name="name"/>
+        <property name="address"/>
+        <property name="deltag"/>
+        <property name="state"/>
+        
+        <many-to-one 
+        	name="emp"
+        	column="empUuid"
+        	class="com.ahpu.erp.domain.Emp"
+        	lazy="false"
+        	/>
+        
+    </class>
+    <query name="store.delete">
+    	UPDATE Store SET deltag = '1' WHERE id =?
+    </query>
+</hibernate-mapping>

@@ -1,0 +1,77 @@
+package com.ahpu.erp.domain;
+
+import org.apache.commons.lang3.text.FormattableUtils;
+
+public class Goods {
+	private String id;
+	private String name;
+	private String origin;
+	private String producer;
+	private String unit;
+	private Double bid;
+	private Double price;
+	private String deltag;
+	
+	private String bidView;
+	private String priceView;
+	
+	private Goodstype goodstype;
+	private Supplier supplier;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getOrigin() {
+		return origin;
+	}
+
+	public void setOrigin(String origin) {
+		this.origin = origin;
+	}
+
+	public String getProducer() {
+		return producer;
+	}
+
+	public void setProducer(String producer) {
+		this.producer = producer;
+	}
+
+	public String getUnit() {
+		return unit;
+	}
+
+	public void setUnit(String unit) {
+		this.unit = unit;
+	}
+
+	public Double getBid() {
+		return bid;
+	}
+
+	public void setBid(Double bid) {
+		this.bid = bid;
+	}
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+
+	public String getBidView() {
+		return bidView;
+	}
+
+	public String getPriceView() {
+		return priceView;
+	}
+
+}	

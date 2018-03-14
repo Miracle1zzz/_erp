@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        '-//Hibernate/Hibernate Mapping DTD 3.0//EN'
+        'http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd'>
+<hibernate-mapping>
+    <class name="com.ahpu.erp.domain.Goods" table="tbl_goods">
+        <id name="id">
+            <generator class="uuid" />
+        </id>
+        <property name="name"/>
+        <property name="origin"/>
+        <property name="producer"/>
+        <property name="unit"/>
+        <property name="bid"/>
+        <property name="price"/>
+        <property name="deltag"/>
+        
+        <!-- 对类别多对一 -->
+        <many-to-one 
+        	name="goodstype"
+        	column="goodsTypeUuid"
+        	class="com.ahpu.erp.domain.Goodstype"
+        	lazy="false"
+        	/>
+    </class>
+</hibernate-mapping>

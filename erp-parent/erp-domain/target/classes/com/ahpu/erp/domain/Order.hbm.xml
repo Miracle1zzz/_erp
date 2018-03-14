@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        '-//Hibernate/Hibernate Mapping DTD 3.0//EN'
+        'http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd'>
+<hibernate-mapping>
+    <class name="com.ahpu.erp.domain.Order" table="tbl_order">
+        <id name="id">
+            <generator class="uuid" />
+        </id>
+        <property name="orderNum"/>
+        <property name="totalNum"/>
+        <property name="createTime"/>
+        <property name="checkTime"/>
+        <property name="endTime"/>
+        <property name="orderType"/>
+        <property name="type"/>
+        <property name="totalPrice"/>
+        <property name="deltag"/>
+        <property name="customer_id"/>
+        
+        <many-to-one 
+        	name="completer"
+        	column="completer"
+        	class="com.ahpu.erp.domain.Staff"
+        	lazy="false"
+        	/>
+        <many-to-one 
+        	name="creater"
+        	column="creater"
+        	class="com.ahpu.erp.domain.Emp"
+        	lazy="false"
+        	/>
+        <many-to-one 
+        	name="checker"
+        	column="checker"
+        	class="com.ahpu.erp.domain.Emp"
+        	lazy="false"
+        	/>
+        <many-to-one 
+        	name="supplier"
+        	column="supplierUuid"
+        	class="com.ahpu.erp.domain.Supplier"
+        	lazy="false"
+        	/>
+        <many-to-one 
+        	name="store"
+        	column="storeUuid"
+        	class="com.ahpu.erp.domain.Store"
+        	lazy="false"
+        	/>
+        <set name="orderDtail" cascade="save-update" inverse="true" order-by="id">
+        	<key column="orderUuid"/>
+        	<one-to-many class="com.ahpu.erp.domain.OrderDetail"/>
+        </set>
+    </class>
+    <query name="order.delete">
+    	UPDATE Order SET deltag = '1' WHERE id =?
+    </query>
+</hibernate-mapping>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        '-//Hibernate/Hibernate Mapping DTD 3.0//EN'
+        'http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd'>
+<hibernate-mapping>
+    <class name="com.ahpu.erp.domain.Notice" table="tbl_notice">
+        <id name="id">
+            <generator class="uuid" />
+        </id>
+        <property name="priority"/>
+        <property name="time"/>
+        <property name="title"/>
+        <property name="content"/>
+        <property name="deltag"/>
+        
+        <many-to-one 
+        	name="despatcher"
+        	column="despatcher"
+        	class="com.ahpu.erp.domain.Emp"
+        	lazy="false"
+        	/>
+    </class>
+    <query name="notice.delete">
+		UPDATE Notice SET deltag = '1' WHERE id = ?    	
+    </query>
+</hibernate-mapping>

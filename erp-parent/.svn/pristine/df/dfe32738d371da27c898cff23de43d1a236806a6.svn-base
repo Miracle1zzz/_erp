@@ -1,0 +1,64 @@
+package com.ahpu.erp.domain;
+
+public class Supplier {
+	private String id;
+	private String name;
+	private String address;
+	private String contact;
+	private String telephone;
+	private Integer needs;
+	private String shortcode;
+	
+	public String getShortcode() {
+		return shortcode;
+	}
+	public void setShortcode(String shortcode) {
+		this.shortcode = shortcode;
+	}
+	public void setNeeds(Integer needs) {
+		this.needs = needs;
+	}
+	public String deltag = "0";
+	
+	
+	public String getDeltag() {
+		return deltag;
+	}
+	public void setDeltag(String deltag) {
+		this.deltag = deltag;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getContact() {
+		return contact;
+	}
+	public void setContact(String contact) {
+		this.contact = contact;
+	}
+	public String getTelephone() {
+		return telephone;
+	}
+	public Integer getNeeds() {
+		return needs;
+	}
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+	
+}

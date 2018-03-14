@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        '-//Hibernate/Hibernate Mapping DTD 3.0//EN'
+        'http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd'>
+<hibernate-mapping>
+    <class name="com.ahpu.erp.domain.Goods" table="tbl_goods">
+        <id name="id">
+            <generator class="uuid" />
+        </id>
+        <property name="name"/>
+        <property name="origin"/>
+        <property name="producer"/>
+        <property name="inPrice"/>
+        <property name="outPrice"/>
+        <property name="deltag"/>
+        <property name="description"/>
+        <property name="image"/>
+        <property name="purchaseNum"/>
+        <property name="minNum"/>
+        <property name="maxNum"/>
+        <property name="shortcode"/>
+        <property name="operTime"/>
+        
+        <!-- 对类别多对一 -->
+        <many-to-one 
+        	name="goodstype"
+        	column="goodsTypeUuid"
+        	class="com.ahpu.erp.domain.Goodstype"
+        	lazy="false"
+        	/>
+    </class>
+    <query name="goods.delete">
+    	UPDATE Goods SET deltag = '1' WHERE id =?
+    </query>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        '-//Hibernate/Hibernate Mapping DTD 3.0//EN'
+        'http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd'>
+<hibernate-mapping>
+    <class name="com.ahpu.erp.domain.Supplier" table="tbl_supplier">
+        <id name="id">
+            <generator class="uuid" />
+        </id>
+        <property name="name"/>
+        <property name="address"/>
+        <property name="contact"/>
+        <property name="telephone"/>
+        <property name="needs"/>
+        <property name="deltag"/>
+        <property name="shortcode"/>
+    </class>
+    <query name="supplier.delete">
+		UPDATE Supplier SET deltag = '1' WHERE id = ?    	
+    </query>
+</hibernate-mapping>

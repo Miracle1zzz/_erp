@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.devMode" value="false" />
+	<!-- 
+		<constant name="struts.objectFactory" value="spring"/>
+	 -->
+	<constant name="struts.multipart.saveDir" value="/goods"></constant>
+	<package name="basicstruts2" extends="struts-default">
+		<interceptors>
+			<!-- 注册自定义拦截器 -->
+			<interceptor name="loginInterceptor" class="com.ahpu.erp.interceptor.LoginInterceptor">
+				<!-- 指定哪些方法不需要拦截 -->
+				<param name="excludeMethods">login</param>
+			</interceptor>
+			<interceptor name="exceptionInterceptor" class="com.ahpu.erp.interceptor.ExceptionInterceptor">
+			</interceptor>
+			<interceptor-stack name="mystack">
+				<interceptor-ref name="exceptionInterceptor" />
+				<interceptor-ref name="loginInterceptor" />
+				<interceptor-ref name="defaultStack" />		
+			</interceptor-stack>
+		</interceptors>
+		<!-- 设置默认拦截器栈 -->
+		<default-interceptor-ref name="mystack" />
+		<!-- 全局结果集定义 -->
+		<global-results>
+			<result name="login">/login.jsp</result>
+			<result name="unauthorized">/unauthorized.jsp</result>
+			<result name="error">/error.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="unauthorized" 
+				exception="org.apache.shiro.authz.UnauthorizedException"></exception-mapping>
+		</global-exception-mappings>
+		<!-- 需要进行权限控制的页面访问 -->
+		<action name="page_*_*">
+			<result type="dispatcher">/WEB-INF/pages/{1}/{2}.jsp</result>
+		</action>
+		<!-- 员工信息管理 -->
+		<action name="empAction_*" class="empAction" method="{1}">
+			<result name="home">/index.jsp</result>
+			<result name="list">/WEB-INF/pages/admin/userlist.jsp</result>
+		</action>
+		<!-- 部门信息管理 -->
+		<action name="depAction_*" class="depAction" method="{1}">
+			<result name="list">/WEB-INF/pages/base/dep.jsp</result>
+		</action>
+		<!-- 角色信息管理 -->
+		<action name="roleAction_*" class="roleAction" method="{1}">
+			<result name="list">/WEB-INF/pages/admin/role.jsp</result>
+		</action>
+		<!-- 权限信息管理 -->
+		<action name="functionAction_*" class="functionAction" method="{1}">
+			<result name="list">/WEB-INF/pages/admin/function.jsp</result>
+		</action>
+		<!-- 供应商信息管理 -->
+		<action name="supplierAction_*" class="supplierAction" method="{1}">
+			<result name="list">/WEB-INF/pages/base/supplierlist.jsp</result>
+		</action>
+		<!-- 商品类型信息管理 -->
+		<action name="goodstypeAction_*" class="goodstypeAction" method="{1}">
+			<result name="list">/WEB-INF/pages/base/goodstypelist.jsp</result>
+		</action>
+		<!-- 商品信息管理 -->
+		<action name="goodsAction_*" class="goodsAction" method="{1}">
+			<result name="list">/WEB-INF/pages/base/goods.jsp</result>
+		</action>
+		<!-- 订单信息管理 -->
+		<action name="orderAction_*" class="orderAction" method="{1}">
+			<result name="list">/WEB-INF/pages/base/order.jsp</result>
+			<result name="buyDetail">/WEB-INF/pages/base/buyDetail.jsp</result>
+			<result name="buyCheckDetail">/WEB-INF/pages/base/buyCheckDetail.jsp</result>
+			<result name="orderTaskDetail">/WEB-INF/pages/base/orderTaskDetail.jsp</result>
+			<result name="toBuyCheckList" type="redirectAction">page_base_buyCheck</result>
+			<result name="toTaskList" type="redirectAction">page_base_taskList</result>
+			<result name="assgin" type="redirectAction">page_base_task</result>
+			<result name="assginStore" type="redirectAction">page_base_instore</result>
+		</action>
+		<!-- 订单项信息管理 -->
+		<action name="orderDetailAction_*" class="orderDetailAction" method="{1}">
+		</action>
+		<!-- 取派员信息管理 -->
+		<action name="staffAction_*" class="staffAction" method="{1}">
+			<result name="list">/WEB-INF/pages/base/staff.jsp</result>
+		</action>
+		<!-- 公告信息管理 -->
+		<action name="noticeAction_*" class="noticeAction" method="{1}">
+		</action>
+		<!-- 预警信息管理 -->
+		<action name="warningAction_*" class="warningAction" method="{1}">
+		</action>
+		<!-- 预警信息管理 -->
+		<action name="storeAction_*" class="storeAction" method="{1}">
+			<result name="list">/WEB-INF/pages/base/storelist.jsp</result>
+		</action>
+		<!-- 仓库库存信息管理 -->
+		<action name="storeDetailAction_*" class="storeDetailAction" method="{1}">
+		</action>
+		<!-- 仓库库存明细信息管理 -->
+		<action name="operDetailAction_*" class="operDetailAction" method="{1}">
+		</action>
+		<action name="saleAction_*" class="saleAction" method="{1}">
+			<result name="list">/WEB-INF/pages/base/salelist.jsp</result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,12 @@
+package com.ahpu.erp.dao.dao;
+
+import com.ahpu.erp.dao.base.dao.IBaseDao;
+import com.ahpu.erp.domain.Emp;
+
+public interface IEmpDao extends IBaseDao<Emp>{
+
+	public Emp findByUsernameAndPassword(String username, String password);
+
+	public Emp findUserByUsername(String username);
+
+}

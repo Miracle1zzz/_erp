@@ -1,0 +1,8 @@
+package com.ahpu.erp.dao.dao;
+
+import com.ahpu.erp.dao.base.dao.IBaseDao;
+import com.ahpu.erp.domain.Goodstype;
+
+public interface IGoodstypeDao extends IBaseDao<Goodstype>{
+
+}

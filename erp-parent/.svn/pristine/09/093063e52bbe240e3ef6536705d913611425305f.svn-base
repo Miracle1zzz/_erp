@@ -1,0 +1,21 @@
+package com.ahpu.erp.dao.impl;
+
+import org.springframework.stereotype.Repository;
+
+import com.ahpu.erp.dao.base.impl.BaseDaoImpl;
+import com.ahpu.erp.dao.dao.IGoodstypeDao;
+import com.ahpu.erp.domain.Goodstype;
+
+/**
+ * ProjectName：erp-dao
+ * ClassName：GoodstypeDaoImpl
+ * Description：商品类别信息dao实现类
+ * @Company：AHPU
+ * @author：段乐
+ * @version 1.0.1
+ * Create Date：2018年1月23日 下午3:09:02
+ */
+@Repository
+public class GoodstypeDaoImpl extends BaseDaoImpl<Goodstype> implements IGoodstypeDao{
+
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        '-//Hibernate/Hibernate Mapping DTD 3.0//EN'
+        'http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd'>
+<hibernate-mapping>
+    <class name="com.ahpu.erp.domain.Goodstype" table="tbl_goodstype">
+        <id name="id">
+            <generator class="uuid" />
+        </id>
+        <property name="name"/>
+        <property name="deltag"/>
+        <property name="shortcode"/>
+        
+        <many-to-one 
+        	name="supplier"
+        	column="supplierUuid"
+        	class="com.ahpu.erp.domain.Supplier"
+        	lazy="false"
+        	/>
+    </class>
+    <query name="goodstype.delete">
+    	UPDATE Goodstype SET deltag = '1' where id =?
+    </query>
+</hibernate-mapping>
